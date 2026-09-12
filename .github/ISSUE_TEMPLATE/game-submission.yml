@@ -1,112 +1,101 @@
 name: Game submission
-description: Ask for a game to be listed on the Xaya Arcade, at one exact commit.
-title: "[game] <slug> @ <short commit>"
+description: Request a new game listing or update with one exact source commit.
+title: "[game] Game title"
 labels: ["submission"]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Submit the version you tested. We review its source, rebuild it and test it privately before listing it.
+        You do not need to run an arcade server. For an update, link the earlier issue in Notes.
   - type: input
     id: repository
     attributes:
-      label: Repository URL
-      description: Public git repository holding the game (rules, blob, client).
+      label: Game repository URL
+      description: Must contain the frontend, rules source, compiled WASM, its SHA-256 file, and build/test instructions. If private, arrange reviewer access.
+      placeholder: https://github.com/your-account/your-game
     validations:
       required: true
   - type: input
     id: commit
     attributes:
-      label: Commit
-      description: The full commit hash that was played on your own stack. The review reads exactly this.
-    validations:
-      required: true
-  - type: input
-    id: slug
-    attributes:
-      label: Slug
-      description: The arcade slug (lowercase letters, digits, dashes), as in your games-table row.
-    validations:
-      required: true
-  - type: input
-    id: gametype
-    attributes:
-      label: Game type
-      description: The on-chain game type string your rules blob is registered under.
+      label: Full commit hash
+      description: The pushed commit containing the frontend and WASM rules you tested. Use the full hash, not a branch or tag.
     validations:
       required: true
   - type: input
     id: gametitle
     attributes:
-      label: Title
-      description: The name shown on the shelf.
+      label: Game title
+    validations:
+      required: true
+  - type: textarea
+    id: game_details
+    attributes:
+      label: Description and controls
+      description: Explain the objective, how to play, and supported devices. You can include a screenshot.
+    validations:
+      required: true
+  - type: textarea
+    id: registration
+    attributes:
+      label: Registration details
+      description: Slug is the proposed URL name. Game type is GAME_KEY in the template. cfgSuffix is the hex rules configuration, or none. Player counts must match your rules.
+      value: |
+        Slug:
+        Game type:
+        Player counts (minimum..maximum):
+        cfgSuffix:
     validations:
       required: true
   - type: input
-    id: seats
+    id: blobpath
     attributes:
-      label: Seats
-      description: "min..max, e.g. 2..4"
-    validations:
-      required: true
-  - type: input
-    id: cfgsuffix
-    attributes:
-      label: cfgSuffix
-      description: "The config suffix the row registers (hex), or `none`."
-    validations:
-      required: true
-  - type: dropdown
-    id: wagering
-    attributes:
-      label: Wagering
-      description: Should WCHI stakes be enabled for this game on the beta?
-      options: ["no", "yes"]
+      label: WASM file path
+      description: Path inside the repository at the submitted commit. Include its .sha256 file alongside it.
+      value: blob/rules.wasm
     validations:
       required: true
   - type: input
     id: blobsha
     attributes:
-      label: rules.wasm sha256
-      description: The blob's hash as registered on your own stack.
+      label: WASM SHA-256
+      description: The hash of the compiled WASM at that commit. We rebuild the rules and check it matches. No frontend bundle hash is required.
     validations:
       required: true
   - type: textarea
-    id: checkblob
+    id: tests
     attributes:
-      label: check-blob --rebuild --strict
-      description: Paste the tail of the strict rebuild check.
-      render: text
+      label: Test results
+      description: Paste summaries for the commands below, or document equivalent checks in your repository. State which player counts and devices you tested and any gaps. A hosted playground run is optional.
+      placeholder: |
+        bash blob/check-blob.sh --rebuild --strict
+        bash blob/tests/run-tests.sh
+        npm test
+        npm run e2e
+        npm run e2e:determinism
+        Player counts and devices tested:
+        Known issues or checks not run:
     validations:
       required: true
-  - type: input
-    id: runtests
+  - type: dropdown
+    id: wagering
     attributes:
-      label: run-tests.sh summary line
-      description: The blob test suite's final line (native and WebAssembly agreeing, fuel within the cap).
-    validations:
-      required: true
-  - type: textarea
-    id: clienttests
-    attributes:
-      label: npm test / e2e / e2e:determinism summaries
-      description: The three summary lines.
-      render: text
-    validations:
-      required: true
-  - type: input
-    id: seatsplayed
-    attributes:
-      label: Seat counts played on your own stack
-      description: "Every seat count you played a full match at, e.g. 2, 3, 4."
+      label: Request WCHI wagering?
+      description: Free play is required. Wagering needs separate approval.
+      options: ["No", "Yes"]
     validations:
       required: true
   - type: dropdown
     id: touch
     attributes:
-      label: Touch controls
-      description: Does the adapter declare touchControls (phone-playable)?
-      options: ["yes", "no"]
+      label: Touch controls supported?
+      description: Does the game have tested touch controls? If No, describe the limitation in Notes for review.
+      options: ["No", "Yes"]
     validations:
       required: true
   - type: textarea
     id: notes
     attributes:
-      label: Anything the review should know
-      description: Optional.
+      label: Notes or update details
+      description: For updates, link the previous issue and describe what changed. Include any build requirements or source dependencies reviewers need.
