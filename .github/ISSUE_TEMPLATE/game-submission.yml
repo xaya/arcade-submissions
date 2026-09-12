@@ -1,0 +1,112 @@
+name: Game submission
+description: Ask for a game to be listed on the Xaya Arcade, at one exact commit.
+title: "[game] <slug> @ <short commit>"
+labels: ["submission"]
+body:
+  - type: input
+    id: repository
+    attributes:
+      label: Repository URL
+      description: Public git repository holding the game (rules, blob, client).
+    validations:
+      required: true
+  - type: input
+    id: commit
+    attributes:
+      label: Commit
+      description: The full commit hash that was played on your own stack. The review reads exactly this.
+    validations:
+      required: true
+  - type: input
+    id: slug
+    attributes:
+      label: Slug
+      description: The arcade slug (lowercase letters, digits, dashes), as in your games-table row.
+    validations:
+      required: true
+  - type: input
+    id: gametype
+    attributes:
+      label: Game type
+      description: The on-chain game type string your rules blob is registered under.
+    validations:
+      required: true
+  - type: input
+    id: gametitle
+    attributes:
+      label: Title
+      description: The name shown on the shelf.
+    validations:
+      required: true
+  - type: input
+    id: seats
+    attributes:
+      label: Seats
+      description: "min..max, e.g. 2..4"
+    validations:
+      required: true
+  - type: input
+    id: cfgsuffix
+    attributes:
+      label: cfgSuffix
+      description: "The config suffix the row registers (hex), or `none`."
+    validations:
+      required: true
+  - type: dropdown
+    id: wagering
+    attributes:
+      label: Wagering
+      description: Should WCHI stakes be enabled for this game on the beta?
+      options: ["no", "yes"]
+    validations:
+      required: true
+  - type: input
+    id: blobsha
+    attributes:
+      label: rules.wasm sha256
+      description: The blob's hash as registered on your own stack.
+    validations:
+      required: true
+  - type: textarea
+    id: checkblob
+    attributes:
+      label: check-blob --rebuild --strict
+      description: Paste the tail of the strict rebuild check.
+      render: text
+    validations:
+      required: true
+  - type: input
+    id: runtests
+    attributes:
+      label: run-tests.sh summary line
+      description: The blob test suite's final line (native and WebAssembly agreeing, fuel within the cap).
+    validations:
+      required: true
+  - type: textarea
+    id: clienttests
+    attributes:
+      label: npm test / e2e / e2e:determinism summaries
+      description: The three summary lines.
+      render: text
+    validations:
+      required: true
+  - type: input
+    id: seatsplayed
+    attributes:
+      label: Seat counts played on your own stack
+      description: "Every seat count you played a full match at, e.g. 2, 3, 4."
+    validations:
+      required: true
+  - type: dropdown
+    id: touch
+    attributes:
+      label: Touch controls
+      description: Does the adapter declare touchControls (phone-playable)?
+      options: ["yes", "no"]
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything the review should know
+      description: Optional.
