@@ -12,7 +12,8 @@ a public playground.
   frontend and rules. If the repository is private, arrange reviewer access.
 - **Game details.** Title, description, controls, player counts, proposed slug,
   game type (`GAME_KEY` in the template), and rules configuration (`cfgSuffix`,
-  or `none`). Say whether you want WCHI wagering.
+  or `none`). Say whether you want WCHI wagering, and if so the Polygon address
+  your game's 5% match fee should be paid to.
 - **Test results.** Include the rules rebuild check, rules tests, frontend tests
   and deterministic replay results. Say which player counts and devices you
   tested, and mention anything you could not test.
@@ -29,7 +30,10 @@ and its hash in the repository so we can reproduce and verify the rules.
 
 We review the source, rebuild the game and test it on a disposable playground.
 Approved games are listed on the public arcade. Wagering is enabled separately
-if requested and approved. Opening an issue does not publish a game automatically.
+if requested and approved. A wagered game pays its 5% match fee to your payout
+address, once you have shown us it is yours. You can move it later from that
+address, and so can the arcade, for a lost key or a delisting. Opening an issue
+does not publish a game automatically.
 
 For an update, use the same form with the new commit, link the earlier issue and
 summarize what changed. We review and schedule the update before deployment.

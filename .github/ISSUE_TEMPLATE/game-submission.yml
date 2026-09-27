@@ -86,6 +86,12 @@ body:
       options: ["No", "Yes"]
     validations:
       required: true
+  - type: input
+    id: payout_address
+    attributes:
+      label: Fee payout address (Polygon)
+      description: Only if you request wagering. Your game's 5% match fee is paid here in WCHI. Use an address you control, not an exchange deposit address; we will ask you to prove it is yours. It is public once registered. You can move it later from that address, and so can the arcade, for a lost key or a delisting.
+      placeholder: 0x…
   - type: dropdown
     id: touch
     attributes:
