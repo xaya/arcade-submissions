@@ -37,3 +37,7 @@ does not publish a game automatically.
 
 For an update, use the same form with the new commit, link the earlier issue and
 summarize what changed. We review and schedule the update before deployment.
+
+## License
+
+MIT: see [LICENSE](LICENSE).
