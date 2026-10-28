@@ -35,6 +35,9 @@ and its hash in the repository so we can reproduce and verify the rules.
 2. [Open the Game submission form](https://github.com/xaya/arcade-submissions/issues/new?template=game-submission.yml), fill it in, and click **Submit new issue**.
 3. Follow that issue for review questions and the result.
 
+If we ask for changes, push a new tested commit and add its full hash and test
+results to the same issue.
+
 We review the source, rebuild the game and test it on a disposable playground.
 Approved games are listed on the [public arcade](https://arcade.xaya.io).
 Wagering is enabled separately if requested and approved. A wagered game pays
