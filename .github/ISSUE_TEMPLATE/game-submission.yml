@@ -12,7 +12,7 @@ body:
     id: repository
     attributes:
       label: Game repository URL
-      description: Must contain the frontend, rules source, compiled WASM, its SHA-256 file, and build/test instructions. If private, arrange reviewer access.
+      description: Must contain the frontend, rules source, compiled WASM, its SHA-256 file, and build/test instructions. If private, say so in Notes so we can arrange read access.
       placeholder: https://github.com/your-account/your-game
     validations:
       required: true
@@ -40,7 +40,7 @@ body:
     id: registration
     attributes:
       label: Registration details
-      description: Slug is the proposed URL name. Game type is GAME_KEY in the template. cfgSuffix is the hex rules configuration, or none. Player counts must match your rules.
+      description: Slug is the proposed URL name. Game type is GAME_KEY in the template's src/app-identity.ts. cfgSuffix is the hex rules configuration, or none. Player counts must match your rules.
       value: |
         Slug:
         Game type:
