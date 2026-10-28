@@ -36,14 +36,20 @@ and its hash in the repository so we can reproduce and verify the rules.
 3. Follow that issue for review questions and the result.
 
 We review the source, rebuild the game and test it on a disposable playground.
-Approved games are listed on the public arcade. Wagering is enabled separately
-if requested and approved. A wagered game pays its 5% match fee to your payout
-address, once you have shown us it is yours. You can move it later from that
-address, and so can the arcade, for a lost key or a delisting. Opening an issue
-does not publish a game automatically.
+Approved games are listed on the [public arcade](https://arcade.xaya.io).
+Wagering is enabled separately if requested and approved. A wagered game pays
+its 5% match fee to your payout address, once you have shown us it is yours. You
+can move it later from that address, and so can the arcade, for a lost key or a
+delisting. Opening an issue does not publish a game automatically.
 
 For an update, use the same form with the new commit, link the earlier issue and
 summarize what changed. We review and schedule the update before deployment.
+
+## Questions
+
+Ask about building or submitting a game in `#builders` on the
+[Xaya Discord](https://discord.gg/FdZWZj4). Keep questions about a submission on
+its issue.
 
 ## License
 
