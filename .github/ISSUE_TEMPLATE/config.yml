@@ -1,1 +1,8 @@
 blank_issues_enabled: false
+contact_links:
+  - name: Ask a question
+    url: https://discord.gg/FdZWZj4
+    about: "Ask about building or submitting a game in #builders on the Xaya Discord."
+  - name: Submission guide
+    url: https://arcade.xaya.io/docs/submitting
+    about: What to send, which checks to run, and how review works.
