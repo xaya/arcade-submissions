@@ -16,3 +16,6 @@ under the repository's *Security* tab), on the repository the bug is in:
 - **The `ArcadeWager` contract**: [arcade-wager](https://github.com/xaya/arcade-wager).
 - **The relay server**: [xaya-relay](https://github.com/xaya/xaya-relay).
 - **This repository's issue forms**: this repository.
+
+If the form is not available to you on that repository, write to info@xaya.io
+instead.
